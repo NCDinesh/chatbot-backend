@@ -48,10 +48,11 @@ export const sendChatMessage = asyncHandler(async (req, res) => {
     }
 
     if (firstMessage) {
+        console.log("First Message", firstMessage);
         // Generate a summary for the first message
        // Generate a concise summary (1-3 words) of the first message
     const summaryResponse = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.0-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
         {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -63,6 +64,7 @@ export const sendChatMessage = asyncHandler(async (req, res) => {
     );
     
     if (!summaryResponse.ok) {
+        // console.log(summaryResponse.message);
         throw new ApiError(500, "Failed to fetch summary from AI");
     }
     

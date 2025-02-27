@@ -15,9 +15,10 @@ import time
 from dotenv import load_dotenv
 import warnings
 
-# Load the .env file
+load_dotenv()
 
 # Access the token
+API_TOKEN = os.getenv("API_TOKEN")
 
 API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
 warnings.filterwarnings('ignore')
